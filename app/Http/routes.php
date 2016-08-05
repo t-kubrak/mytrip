@@ -12,5 +12,15 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
 });
+
+Route::get('/api/airports', 'AirportController@index');
+
+Route::get('/api/flights', 'FlightController@index');
+
+Route::post('/api/flights', 'FlightController@store');
+
+Route::delete('/api/flights/{id}', 'FlightController@destroy');
+
+Route::put('/api/trips/{id}', 'TripController@update');
