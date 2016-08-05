@@ -16,7 +16,7 @@ class AirportController extends Controller
     public function index()
     {
         return response()->json(
-            \App\Airport::all('code', 'name', 'city', 'country')
+            \App\Airport::all('code', 'name', 'city', 'country')->sortBy('name')
         );
     }
 
