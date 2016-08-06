@@ -5,7 +5,7 @@
 ##Installation
 
 1. Open the command line utility, `git clone https://github.com/t-kubrak/mytrip.git`
-2. `cd mytrip`
+2. `cd mytrip` - change directory to root project folder
 3. `composer install` - installs all dependencies. See the following [link](https://getcomposer.org/doc/00-intro.md) if you don't have it
 4.  Copy **.env.example** file in the root folder (mytrip) and rename it to **.env**
 5.  `php artisan key:generate` generates application key
