@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-
+    return view('index');
 });
 
 Route::get('/api/airports', 'AirportController@index');

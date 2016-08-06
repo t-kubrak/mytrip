@@ -9,6 +9,7 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
@@ -53,6 +54,8 @@ class Handler extends ExceptionHandler
             return response()->view('errors.404');
         } elseif ($e instanceof QueryException) {
             return response("Endpoint is not correct");
+        } elseif ($e instanceof MethodNotAllowedHttpException) {
+            return response("HTTP method is not correct");
         }
 
         return parent::render($request, $e);
