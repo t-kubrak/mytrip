@@ -14,9 +14,9 @@ class FlightController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return response()->json(\App\Flight::where('trip', 1)->get());
+        return response()->json(\App\Flight::where('trip', $request->input('trip'))->get());
     }
 
     /**
@@ -85,9 +85,9 @@ class FlightController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        $flight = Flight::where('trip', 1)->findOrFail($id);
+        $flight = Flight::where('trip', $request->input('trip'))->findOrFail($id);
 
         $flight->delete();
 
