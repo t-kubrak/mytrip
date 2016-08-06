@@ -37,11 +37,13 @@ class FlightController extends Controller
      */
     public function store(Request $request)
     {
-        return response()->json(
-            \App\Flight::create([
-            'departure' => $request->input('departure'),
-            'arrival' => $request->input('arrival'),
-        ]));
+//        return response()->json(
+//            );
+        $flight = new Flight();
+
+        $flight->departure = $request->input('departure');
+        $flight->arrival = $request->input('arrival');
+        $flight->trips()->attach($request->input('trip_id'));
     }
 
     /**
