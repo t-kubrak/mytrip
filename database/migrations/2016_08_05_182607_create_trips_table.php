@@ -15,12 +15,7 @@ class CreateTripsTable extends Migration
         Schema::create('trips', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('flight')->unsigned()->nullable();
             $table->timestamps();
-        });
-
-        Schema::table('trips', function ($table) {
-            $table->foreign('flight')->references('id')->on('flights');
         });
     }
 
