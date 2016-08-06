@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Database\QueryException;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -50,6 +51,8 @@ class Handler extends ExceptionHandler
             return response("Data not found");
         } elseif ($e instanceof NotFoundHttpException) {
             return response()->view('errors.404');
+        } elseif ($e instanceof QueryException) {
+            return response("Endpoint is not correct");
         }
 
         return parent::render($request, $e);
