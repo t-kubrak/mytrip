@@ -17,8 +17,9 @@
 		- DB_DATABASE=trips
 		- DB_USERNAME=dbAdmin
 		- DB_PASSWORD=password
-	2. If we use database other than MySQL, we need to change default database connection in mytrip/config/database.php
-		- `'default' => env('DB_CONNECTION', 'mysql')`
+	2. If we use database other than MySQL, we need to change default database connection in *mytrip/config/database.php*
+		- `'default' => env('DB_CONNECTION', 'pgsql')`
+	3. Also, we need to make sure that PDO extension for our database engine is enabled in *php.ini* configuration file. For example, `extension=php_pdo_mysql.dll`. See the following [link](http://php.net/manual/en/pdo.installation.php) for more details.
 7.  Create database, user and add some data. Optional: if we use MySQL db engine, we can execute SQL script in *mytrip/databases/trips.sql* and skip the rest of installation.
 	1. For MySQL we can use the following commands:
 	  	- `CREATE DATABASE trips CHARACTER SET utf8 COLLATE utf8_unicode_ci;`
